@@ -1,6 +1,6 @@
 public class Account {
 
     public String getReport() {
-        return null;
+        return "DATE | AMOUNT | BALANCE\n";
     }
 }
