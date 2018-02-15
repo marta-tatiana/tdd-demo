@@ -18,7 +18,8 @@ public class AccountShould {
     @Test public void reportSingleTransactionWithCorrectFormattingAndBalance() {
         Account account = new Account();
         Calendar calendar = new GregorianCalendar();
-        calendar.set(2012, 10, 1);
+        calendar.clear();
+        calendar.set(2012, Calendar.JANUARY, 10);
         account.deposit(calendar.getTime(), 100);
         String report = account.getReport();
         assertThat(report, equalTo("DATE | AMOUNT | BALANCE\n10/01/2012 | 100.00 | 100.00\n"));
