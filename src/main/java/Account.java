@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,5 +25,9 @@ public class Account {
         lastDate = date;
         balance = i;
         lastTransaction = i;
+    }
+
+    public void print(PrintStream out) {
+        out.print(header);
     }
 }

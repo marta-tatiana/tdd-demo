@@ -1,11 +1,15 @@
 import org.junit.Test;
 
+import java.io.PrintStream;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class AccountShould {
 
@@ -13,6 +17,13 @@ public class AccountShould {
         Account account = new Account();
         String report = account.getReport();
         assertThat(report, equalTo("DATE | AMOUNT | BALANCE\n"));
+    }
+
+    @Test public void printNoTransactionWhenCreated() {
+        PrintStream printStream = mock(PrintStream.class);
+        Account account = new Account();
+        account.print(printStream);
+        verify(printStream, times(1)).print("DATE | AMOUNT | BALANCE\n");
     }
 
     @Test public void reportSingleTransactionWithCorrectFormattingAndBalance() {
